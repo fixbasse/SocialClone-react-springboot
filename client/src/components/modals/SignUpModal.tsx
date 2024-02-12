@@ -68,12 +68,12 @@ export function SignUpModal() {
             </DialogTrigger>
 
             {/* LOGIN CONTAINER */}
-            <DialogContent className="max-[375px]:w-[280px] p-0 py-4 max-[375px]:p-2 w-[450px] md:w-[800px] rounded-md border dark:border-gray-600">
-                <DialogHeader>
-                    <DialogTitle className="text-2xl md:text-3xl px-4">
+            <DialogContent className="p-0 max-[375px]:w-[280px] max-[500px]:w-[300px] w-[450px] md:w-[800px] rounded-md shadow-xl border dark:border-gray-600">
+                <DialogHeader className="py-2 md:py-4">
+                    <DialogTitle className="text-2xl md:text-3xl px-8">
                         Sign Up
                     </DialogTitle>
-                    <DialogDescription className="px-4">
+                    <DialogDescription className="px-8">
                         Anyone who has this link will be able to view this.
                     </DialogDescription>
                     <hr />
@@ -83,10 +83,10 @@ export function SignUpModal() {
                 <Form {...form}>
                     <form
                         onSubmit={form.handleSubmit(onSubmit)}
-                        className="p-4 flex flex-col gap-4"
+                        className="p-4 md:p-8 flex flex-col gap-4"
                     >
                         {/* NAME */}
-                        <section className="flex justify-between w-full gap-4">
+                        <section className="flex flex-col md:flex-row justify-between w-full gap-4">
                             {/* FirstName */}
                             <FormField
                                 control={form.control}
@@ -122,7 +122,7 @@ export function SignUpModal() {
                         </section>
 
                         {/* EMAIL & PASSWORD */}
-                        <section className="flex justify-between w-full gap-4">
+                        <section className="flex flex-col md:flex-row justify-between w-full gap-4">
                             {/* Email */}
                             <FormField
                                 control={form.control}

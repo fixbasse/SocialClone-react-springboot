@@ -21,7 +21,7 @@ const formSchema = z.object({
   password: z.string().min(4, {
     message: 'd',
   })
-})
+});
 
 //* 
 const Right = () => {
@@ -39,11 +39,11 @@ const Right = () => {
   };
 
   return (
-    <div className='md:flex-1 flex flex-col items-end'>
+    <div className='md:flex-1 flex flex-col md:items-end'>
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-8 border p-4 md:p-8 max-[375px]:w-full w-[400px] rounded-md shadow-md"
+          className="space-y-4 border dark:border-gray-400 p-4 md:p-8 max-[375px]:w-full w-[400px] rounded-md shadow-md"
         >
           {/* EMAIL */}
           <FormField
@@ -58,8 +58,6 @@ const Right = () => {
                     {...field}
                   />
                 </FormControl>
-
-                <FormMessage />
               </FormItem>
             )}
           />
@@ -86,7 +84,7 @@ const Right = () => {
             <Button
               variant='default'
               type="submit"
-              className=" w-full font-semibold text-xl h-[50px] "
+              className="w-full font-semibold text-xl h-[50px] "
             >
               Login
             </Button>

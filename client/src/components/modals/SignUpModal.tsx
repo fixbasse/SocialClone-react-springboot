@@ -1,6 +1,9 @@
 
-import { EMPTY_PATH, z } from "zod"
+import { z } from "zod"
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+
 import {
     Dialog,
     DialogClose,
@@ -11,12 +14,16 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "@/components/ui/dialog"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
-import { Form, FormControl, FormField, FormItem } from "../ui/form"
 
+import { useForm } from "react-hook-form";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem
+} from "../ui/form";
+
+//*  
 const formSchema = z.object({
     firstname: z.string().min(2, {
         message: "What's your name?",
@@ -30,8 +37,9 @@ const formSchema = z.object({
     password: z.string().min(6, {
         message: "Atleast 6 numbers, letters and punctuation marks",
     }),
-})
+});
 
+//*  
 export function SignUpModal() {
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
@@ -59,9 +67,8 @@ export function SignUpModal() {
                 </Button>
             </DialogTrigger>
 
-            {/*  */}
-            <DialogContent className="max-[375px]:w-[280px] p-0 py-4 max-[375px]:p-2 w-[400px] md:w-[500px] rounded-md">
-
+            {/* LOGIN CONTAINER */}
+            <DialogContent className="max-[375px]:w-[280px] p-0 py-4 max-[375px]:p-2 w-[450px] md:w-[800px] rounded-md border dark:border-gray-600">
                 <DialogHeader>
                     <DialogTitle className="text-2xl md:text-3xl px-4">
                         Sign Up
@@ -72,15 +79,15 @@ export function SignUpModal() {
                     <hr />
                 </DialogHeader>
 
-
+                {/* FORM ===================> */}
                 <Form {...form}>
                     <form
                         onSubmit={form.handleSubmit(onSubmit)}
                         className="p-4 flex flex-col gap-4"
                     >
-
+                        {/* NAME */}
                         <section className="flex justify-between w-full gap-4">
-                            {/* EMAIL */}
+                            {/* FirstName */}
                             <FormField
                                 control={form.control}
                                 name="firstname"
@@ -96,7 +103,7 @@ export function SignUpModal() {
                                     </FormItem>
                                 )}
                             />
-                            {/* SURNAME */}
+                            {/* SurName*/}
                             <FormField
                                 control={form.control}
                                 name="surname"
@@ -116,7 +123,7 @@ export function SignUpModal() {
 
                         {/* EMAIL & PASSWORD */}
                         <section className="flex justify-between w-full gap-4">
-                            {/* EMAIL */}
+                            {/* Email */}
                             <FormField
                                 control={form.control}
                                 name="email"
@@ -132,7 +139,8 @@ export function SignUpModal() {
                                     </FormItem>
                                 )}
                             />
-                            {/* SURNAME */}
+
+                            {/* Password */}
                             <FormField
                                 control={form.control}
                                 name="password"
@@ -153,9 +161,13 @@ export function SignUpModal() {
 
                 </Form>
 
+                {/* <============= FOOTER */}
                 <DialogFooter className="sm:justify-start">
                     <DialogClose asChild>
-                        <Button type="button" variant="secondary">
+                        <Button
+                            type="button"
+                            variant="secondary"
+                        >
                             Close
                         </Button>
                     </DialogClose>

@@ -6,7 +6,6 @@ import { Button } from "@/components/ui/button"
 
 import {
     Dialog,
-    DialogClose,
     DialogContent,
     DialogDescription,
     DialogFooter,
@@ -24,7 +23,7 @@ import {
     FormLabel
 } from "../ui/form";
 import { RadioGroup, RadioGroupItem } from "../ui/radio-group";
-import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from "../ui/select";
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from "../ui/select";
 
 // SIGN-UP SCHEMA  
 const formSchema = z.object({
@@ -78,7 +77,7 @@ export function SignUpModal() {
             {/* LOGIN CONTAINER */}
             <DialogContent className="p-0 max-[500px]:w-full w-[450px] md:w-[800px] rounded-md shadow-xl border">
                 <DialogHeader>
-                    <DialogTitle className="text-2xl md:text-3xl px-8 pt-2">
+                    <DialogTitle className="text-2xl md:text-3xl px-8 pt-4">
                         Sign Up
                     </DialogTitle>
                     <DialogDescription className="pb-2 px-8">
@@ -340,7 +339,7 @@ export function SignUpModal() {
                             <Button
                                 type="submit"
                                 variant="secondary"
-                                className="w-full rounded-none"
+                                className="w-full rounded-none font-semibold text-md h-[50px]"
                             >
                                 Signup
                             </Button>

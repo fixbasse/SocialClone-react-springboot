@@ -12,13 +12,13 @@ import {
 import { Input } from "@/components/ui/input"
 import { SignUpModal } from "@/components/modals/SignUpModal"
 
-
+// SCHEMA
 const formSchema = z.object({
   email: z.string().min(2, {
     message: "Username must be at least 2 characters.",
   }),
   password: z.string().min(4, {
-    message: 'd',
+    message: '',
   })
 });
 
@@ -28,10 +28,11 @@ const Right = () => {
     resolver: zodResolver(formSchema),
     defaultValues: {
       email: '',
-      password: ''
+      password: '',
     }
   });
 
+  //* LOGIN BUTTON 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log(values);
 
@@ -39,11 +40,12 @@ const Right = () => {
 
   return (
     <div className='md:flex-1 flex flex-col md:items-end'>
-      
+
+      {/* LOGIN FORM ===========> */}
       <Form {...form}>
         <form
           onSubmit={form.handleSubmit(onSubmit)}
-          className="space-y-4 border dark:border-gray-400 p-4 md:p-8 max-[375px]:w-full w-[400px] rounded-md shadow-md"
+          className="space-y-4 border p-4 md:p-8 max-[375px]:w-full w-[400px] rounded-md shadow-md"
         >
 
           {/* EMAIL */}
@@ -55,14 +57,13 @@ const Right = () => {
                 <FormControl>
                   <Input
                     placeholder="Email address"
-                    className="p-4 h-[60px] border-gray-300 text-md"
+                    className="p-4 h-[60px] text-md"
                     {...field}
                   />
                 </FormControl>
               </FormItem>
             )}
           />
-
           {/* PASSWORD */}
           <FormField
             control={form.control}
@@ -72,7 +73,7 @@ const Right = () => {
                 <FormControl>
                   <Input
                     placeholder="Password"
-                    className="p-4 h-[60px] border-gray-300 text-md"
+                    className="p-4 h-[60px] text-md"
                     {...field}
                   />
                 </FormControl>
@@ -81,23 +82,28 @@ const Right = () => {
           />
 
           {/* BUTTON */}
-          <div className="flex flex-col gap-2">
-            <Button
-              variant='default'
-              type="submit"
-              className="w-full font-semibold text-xl h-[50px]"
-            >
-              Login
-            </Button>
+          <section className="flex flex-col gap-2">
+            <>
+              <Button
+                type="submit"
+                variant='default'
+                className="w-full font-semibold text-xl h-[50px]"
+              >
+                Login
+              </Button>
 
-            <button className="text-center text-teal-600 mb-4 hover:underline">
-              Forget password?
-            </button>
+              <button className="text-center text-teal-600 mb-4 hover:underline">
+                Forget password?
+              </button>
+            </>
 
             <hr />
 
-            <SignUpModal />
-          </div>
+            {/* <============= OR CREATE ACCOUNT */}
+            <>
+              <SignUpModal />
+            </>
+          </section>
         </form>
 
       </Form>

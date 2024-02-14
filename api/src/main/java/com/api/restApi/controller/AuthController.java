@@ -13,6 +13,6 @@ public class AuthController {
     @Autowired
     private AuthRepository authRepository;
 
-    @PostMapping("/register")
-    User newUser(@RequestBody User newUser) {return authRepository.save(Ï)}
+    // @PostMapping("/register")
+    // User newUser(@RequestBody User newUser)
 }

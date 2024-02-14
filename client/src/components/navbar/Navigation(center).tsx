@@ -24,7 +24,7 @@ const Navigation = () => {
   const { pathname } = useLocation();
 
   return (
-    <div className="flex-1 flex items-center justify-between">
+    <div className="flex-1 hidden md:flex items-center justify-between mx-4">
 
       {navlinks.map((item) => (
         <Link

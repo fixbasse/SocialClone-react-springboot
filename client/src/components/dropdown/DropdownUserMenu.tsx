@@ -7,15 +7,16 @@ import {
     LogOut,
     Mail,
     MessageSquare,
+    Moon,
     Plus,
     PlusCircle,
     Settings,
+    Sun,
     User,
     UserPlus,
     Users,
 } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
 import {
     DropdownMenu,
     DropdownMenuContent,
@@ -30,8 +31,11 @@ import {
     DropdownMenuSubTrigger,
     DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu"
+import { useTheme } from "@/providers/theme-provider"
 
 export function DropdownUserMenu() {
+    const { setTheme } = useTheme();
+
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
@@ -41,7 +45,7 @@ export function DropdownUserMenu() {
                     alt="profilePic"
                 />
             </DropdownMenuTrigger>
-            <DropdownMenuContent className="w-56">
+            <DropdownMenuContent className="max-[768px]:w-screen max-[768px]:h-screen md:w-56 md:absolue md:right-[-30px] md:top-4">
                 <DropdownMenuLabel>My Account</DropdownMenuLabel>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
@@ -65,6 +69,17 @@ export function DropdownUserMenu() {
                         <span>Keyboard shortcuts</span>
                         <DropdownMenuShortcut>⌘K</DropdownMenuShortcut>
                     </DropdownMenuItem>
+
+                    {/* THEM */}
+                    <DropdownMenuItem onClick={() => setTheme("light")}>
+                        <Sun className="mr-2 h-4 w-4 scale-100 transition-all" />
+                        Light
+                    </DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setTheme("dark")}>
+                        <Moon className="mr-2 h-4 w-4 rotate-100 scale-100 transition-all" />
+                        Dark
+                    </DropdownMenuItem>
+                    
                 </DropdownMenuGroup>
                 <DropdownMenuSeparator />
                 <DropdownMenuGroup>
@@ -120,7 +135,9 @@ export function DropdownUserMenu() {
                     <span>Log out</span>
                     <DropdownMenuShortcut>⇧⌘Q</DropdownMenuShortcut>
                 </DropdownMenuItem>
+
             </DropdownMenuContent>
+
         </DropdownMenu>
     )
 }

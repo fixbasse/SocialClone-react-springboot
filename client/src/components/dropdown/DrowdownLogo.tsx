@@ -47,20 +47,27 @@ export function DropdownLogo() {
 
     return (
         <Popover open={open} onOpenChange={setOpen}>
+
             <PopoverTrigger asChild>
                 <Button
                     variant="outline"
                     role="combobox"
                     aria-expanded={open}
-                    className="w-[200px] justify-between"
+                    className="md:w-[200px] rounded-full"
                 >
-                    {value
+                    <div className={value
                         ? frameworks.find((framework) => framework.value === value)?.label
-                        : "Select framework..."}
-                    <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+                        : ""}
+                    >
+                        <span className="hidden md:block">
+                            Search and name...
+                        </span>
+                    </div>
+                    <ChevronsUpDown className="md:ml-2 h-4 w-4 shrink-0 opacity-50" />
                 </Button>
             </PopoverTrigger>
-            <PopoverContent className="w-[200px] p-0">
+
+            <PopoverContent className="max-[768px]:w-screen max-[768px]:h-screen md:w-[400px] p-0">
                 <Command>
                     <CommandInput placeholder="Search framework..." />
                     <CommandEmpty>No framework found.</CommandEmpty>

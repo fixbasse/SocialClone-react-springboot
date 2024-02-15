@@ -12,6 +12,8 @@ function App() {
     <div>
       <Navbar />
       
+      <div className="p-4 bg-primary-foreground h-screen">
+
       <Routes>
         <Route path="/prehome" element={<UnprotectedPage />} />
 
@@ -21,6 +23,7 @@ function App() {
         <Route path="/game" element={<Game />} />
       </Routes>
 
+      </div>
     </div>
   )
 }

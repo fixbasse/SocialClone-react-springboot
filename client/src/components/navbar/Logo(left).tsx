@@ -24,7 +24,7 @@ const Logo = ({
       className={spread ? (
         'flex-1'
       ) : (
-        'flex items-center gap-4 flex-1'
+        'flex items-center max-[768px]:gap-2 md:gap-4 flex-1'
       )}>
       <Link
         to='/'
@@ -44,7 +44,7 @@ const Logo = ({
         <Search
           onClick={handleSpread}
           size={18}
-          className={`absolute left-4
+          className={`absolute left-4 text-gray-400 
           ${spread && 'hidden'}
           `}
         />
@@ -58,37 +58,45 @@ const Logo = ({
         />
       </section>
 
-      <div className='hidden max-[768px]:block hover:bg-gray-100 hover:dark:bg-gray-800 p-2 rounded-md cursor-pointer'>
-          <Menu
-            size={25}
-          />
-        </div>
-
-      {/* MOBILE */}
+      {/* SMALL SCREEN ==========> */}
       {/* SEARCH BOX */}
-      {/* <section className={`hidden max-[768px]:flex items-center relative
-      ${spread && 'px-4 bg-white dark:bg-gray-900 h-[500px] w-[350px] shadow-md rounded-md'}
+      <section
+        //onClick={handleSpread} // for closing it when expand
+        className={`hidden max-[768px]:flex items-center w-full z-50 duration-300
+      ${spread && 'px-4 bg-white dark:bg-gray-900 absolute top-0 left-0 h-full w-full shadow-md rounded-md duration-300'}
       `}>
 
         <div
           onClick={handleSpread}
-          className={`bg-gray-100 dark:bg-gray-800 p-3 rounded-full
-        ${spread && 'hidden'}
-        `}>
+          className={`relative flex items-center justify-center
+          ${spread && 'w-full'}
+          `}>
+          <input
+            placeholder="Search Fakebook"
+            className={`rounded-full w-0 bg-gray-100 dark:bg-gray-700 text-md h-[40px] pl-4 font-light duration-300 outline-none focus-visible:ring-0 pr-6
+          ${spread && 'px-8 w-screen duration-300'}
+          `}
+          />
           <Search
+            className={`absolute text-gray-400
+            ${spread && 'hidden'}
+            `}
             size={18}
           />
         </div>
 
-
-        <input
-          onClick={handleSpread}
-          placeholder="Search Fakebook"
-          className={`rounded-full bg-gray-100 dark:bg-gray-700 text-md h-[40px] pl-10 font-light duration-300 outline-none focus-visible:ring-0 pr-6
-          ${spread && 'pl-4 pr-4 w-full duration-300'}
-          `}
-        />
-      </section> */}
+        {/* MENUBAR */}
+        <div className={`hidden max-[768px]:block hover:bg-gray-100 hover:dark:bg-gray-800 p-2 ml-2 rounded-md cursor-pointer
+        
+        `}>
+          <Menu
+            size={25}
+            className={`text-gray-400
+            ${spread && 'hidden'}
+            `}
+          />
+        </div>
+      </section>
     </div>
   )
 }
